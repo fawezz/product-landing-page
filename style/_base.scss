@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: $font-primary, $font-secondary, sans-serif;
+    color: $txt-color;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
