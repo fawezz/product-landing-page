@@ -7,6 +7,9 @@ header{
     width: 100vw;
     padding: 1rem 4rem;
 }
+#logo{
+    cursor: pointer;
+}
 .nav-items{
     list-style: none;
     padding: 0;
@@ -16,19 +19,44 @@ header{
     text-transform: capitalize;
     padding: 0.625rem;
     color: white;
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &:hover{
         color: $highlight-color;
     }
 }
+#menu{
+    cursor: pointer;
+    display: none;
+    position: relative;
+    z-index: 1;
+    .rect{
+        width: 26px;
+        height: 1px;
+        margin: 6px;
+        border-radius: 5px;
+        transform-origin: bottom left;
+        background: white;
+        transition: all .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+}
 #cta-github{
-    padding: .7rem 1rem;
     background: $highlight-color;
-    border-radius: 50px;
+    padding: 10px 16px;
+    border-radius: 2px;
     color: $accent-color;
+    font-size: .825rem;
+    font-weight: 500;
+    transition: all .6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     i{
         margin-right: .313rem;
     }
+    &:hover{
+        background: $accent-color;
+        color: $highlight-color;
+    }
 }
+
+// * Hero section
 
 .overlay{
     height: 100vh;
@@ -53,18 +81,21 @@ header{
 #heading{
     font-size: 3.5rem;
     font-weight: 300;
-    margin-bottom: 1rem;
 }
 .description{
-    max-width: 620px;
+    max-width: 640px;
+    padding: 1rem;
     letter-spacing: 1px;
-    line-height: 1.5rem;
-    font-weight: 300;
+    line-height: 1.6rem;
+    font-size: 1rem;
 }
 .ctas{
     margin-top: 2rem;
+    @include flex;
+    flex-wrap: wrap;
 }
 .btn{
+    font-weight: 500;
     padding: 1rem 2rem;
     transition: all .8s cubic-bezier(0.215, 0.610, 0.355, 1);
     i{
@@ -77,10 +108,64 @@ header{
     &:hover{
         background: black;
     }
+    margin-bottom: 5px;
 }
 .secondary-cta{
     background: black;
     &:hover{
         background: $highlight-color;
     }
+}
+
+@media only screen and (max-width: 1200px){
+    html{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 900px){
+    header{
+        padding: 1rem;
+    }
+    #menu{
+        display: block;
+    }
+    nav{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 0;
+        background: $bg-color;
+        overflow: hidden;
+        transition: all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .nav-items{
+            flex-direction: column;
+            height: 100%;
+            align-items: center;
+            li{
+                padding: 1.5em 0;
+            }
+            a{
+                font-size: 1.5rem;
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
+        }
+    }
+    .cta{
+        display: none;
+    }
+}
+.flip1{
+    transform: rotate(45deg) translate(0, -1px);
+}
+.slide-away{
+    transform: translate(-100%);
+    opacity: 0;
+}
+.flip2{
+    transform: rotate(-45deg) translate(0, 2px);
+}
+.slide{
+    width: 100%;
 }
